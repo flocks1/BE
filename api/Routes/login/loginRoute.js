@@ -3,7 +3,7 @@ const login = require('./loginRouteHelper');
 
 const routes = express.Router();
 
-routes.post('', async (req, res) => {
+routes.post('/', async (req, res) => {
     try {
         message = await login(req.body);
         if (message) {
