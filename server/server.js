@@ -17,7 +17,7 @@ server.use(express.json());
 server.use('/register', registerRoute);
 server.use('/login', loginRoute);
 
-server.get('/user', async (req, res) => {
+server.get('', async (req, res) => {
     try {
         users = await db('Users')
         if (users) {
