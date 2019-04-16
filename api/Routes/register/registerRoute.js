@@ -5,7 +5,7 @@ const route = express.Router();
 
 route.post('', async (req, res) => {
     try {
-        user = await register(credentials);
+        user = await register(req.body);
         if (user) {
             res.status(200).json(user);
         }

@@ -1,11 +1,12 @@
-const db = require('../data/dbConfig.js');
+const db = require('../../../data/dbConfig');
 const bcrypt = require('bcryptjs');
 
-module.exports = register;
 
-async function register(credentials) {
-    user = credentials;
-    hash = bcrypt.hashSync(credentials.password, 10);
+
+function register(user) {
+    hash = bcrypt.hashSync(user.password, 10);
     user.password = hash;
     return db('Users').insert(user);
 }
+
+module.exports = register;
