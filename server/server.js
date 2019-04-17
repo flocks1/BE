@@ -54,7 +54,7 @@ server.get('/tweets', async (req, res) => {
         var params = { screen_name: 'nodejs', id: 1 };
         client.get('/trends/place.json', params, function (error, tweets, response) {
             if (!error) {
-                res.status(200).json(tweets);
+                res.status(200).json(tweets[0].trends);
             } else {
                 res.send(error);
             }
