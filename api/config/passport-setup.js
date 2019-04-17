@@ -10,13 +10,18 @@ passport.use(
         clientID: keys.google.client_id,
         clientSecret: keys.google.client_secret
     }, (accessToken, refreshToken, profile, done) => {
-        db('Users').where({ username: profile.displayName }).then(user => {
-            if (user) {
-                console.log(user);
-            } else {
-                db('Users').insert({ username: profile.displayName, })
-            }
-            console.log(profile);
-        })
+        const hashed = bcrypt.hashSync(profile.id, 10);
+        profile.id = hashed;
+        db('Users').where({ username: profile.displayName }).first()
+            .then(user => {
+                if (user) {
+                    done(null, user);
+                } else {
+                    db('Users').insert({ username: profile.displayName, password: profile.id })
+                        .then(user => {
+                            done(null, user);
+                        })
+                }
+            })
     })
 )

@@ -7,7 +7,7 @@ router.get('', passport.authenticate('google', {
 }));
 
 router.get('/redirect', passport.authenticate('google'), (req, res) => {
-    res.send('You are logged in now');
+    console.log('Hello')
 })
 
 
