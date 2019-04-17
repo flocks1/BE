@@ -4,6 +4,14 @@ const keys = require('./keys');
 const db = require('../../data/dbConfig');
 const bcrypt = require('bcryptjs');
 
+passport.serializeUser((user, done) => {
+    done(null, user);
+})
+
+passport.deserializeUser((user, done) => {
+    done(null, user);
+})
+
 passport.use(
     new GoogleStrategy({
         callbackURL: '/login/google/redirect',
