@@ -8,6 +8,7 @@ const db = require('../data/dbConfig');
 const registerRoute = require('../api/Routes/register/registerRoute');
 const loginRoute = require('../api/Routes/login/loginRoute');
 const loginWithGoogleRoute = require('../api/Routes/login/loginWithGoogle');
+const trendsRoute = require('../api/Routes/trends/trendsRoute');
 
 const server = express();
 
@@ -18,16 +19,7 @@ server.use(express.json());
 server.use('/register', registerRoute);
 server.use('/login', loginRoute);
 server.use('/login/google', loginWithGoogleRoute);
+server.use('/trends', trendsRoute);
 
-server.get('', async (req, res) => {
-    try {
-        users = await db('Users')
-        if (users) {
-            res.status(200).json(users);
-        }
-    } catch (error) {
-        res.status(500).json(error);
-    }
-})
 
 module.exports = server;
