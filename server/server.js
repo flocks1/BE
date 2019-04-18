@@ -38,17 +38,6 @@ const client = new Twitter({
     bearer_token: 'AAAAAAAAAAAAAAAAAAAAAMQL%2BAAAAAAAOZVd9ROoyKKWxmET%2FkCxS8aqrrw%3DhgbkeyZVPR7P6VtVhaY4mx25Y9aZ88jteTj3fu31vlCJURej8T',
 });
 
-// server.get('/tweets', async (req, res) => {
-//     try {
-//         data = await axios().get('https://api.twitter.com/1.1/trends/place.json?id=1');
-//         console.log(data);
-//         if (data) {
-//             res.status(200).json(data)
-//         }
-//     } catch (error) {
-//         console.log(error);
-//     }
-// })
 server.get('/tweets', async (req, res) => {
     try {
         var params = { screen_name: 'nodejs', id: 1 };
