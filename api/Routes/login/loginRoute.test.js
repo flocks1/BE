@@ -8,7 +8,7 @@ describe('login route', () => {
     it('should login succesfull', () => {
         return request(server)
             .post('/login')
-            .send({ username: "Thorben", password: "Test" })
+            .send({ username: "Ben 8716", password: "Test" })
             .expect('Content-Type', 'application/json; charset=utf-8')
             .expect(200);
     })
